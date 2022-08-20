@@ -1,0 +1,56 @@
+.todo{
+  gap: 1rem;
+  text-align: left;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  background-color: #eef0dc;
+}
+
+.todo__control label{
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.todo__control input{
+  display: block;
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.todo__control select{
+  display: block;
+  font:inherit;
+  padding:0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 21rem;
+  max-width: 100%;
+}
+
+.btns{
+  text-align: right;
+}
+
+.btn__todo{
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    border: 1px solid #000000;
+    background-color: #52b33a;
+    color: white;
+    border-radius: 12px;
+    margin-right: 2rem;
+    margin-top:1rem;
+    text-align: right;
+    margin-bottom: 1rem;
+    
+}
+
+.btn__todo:hover{
+    background-color: #8dd87b;
+}
+
