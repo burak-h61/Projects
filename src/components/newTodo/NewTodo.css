@@ -1,0 +1,19 @@
+.new__todo{
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #eef0dc;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    gap:1rem;
+    width: 50rem;
+    max-width: 95%;
+    margin:2rem auto;
+}
+
+.new__todo button{
+    padding:12px;
+    border-radius: 12px;
+    border:1px solid black;
+    background-color:rgba(57, 145, 22, 0.959);
+    color:white;
+}

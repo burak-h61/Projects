@@ -24,17 +24,56 @@ const TodoForm = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    const todo = {
+    const enteredTodo = {
       title: inputTitle,
       description: inputDescription,
       priority: inputPriority,
       date: new Date(inputDate),
     };
-    props.onSaveTodoData(todo);
-    setInputTitle("");
-    setInputDescription("");
-    setInputPriority("");
-    setInputDate("");
+    
+    const validateEnteredTodoTitle = () => {
+      return (
+        enteredTodo.title !== null ||
+        enteredTodo.title !== undefined ||
+        enteredTodo.title !== ""
+      );
+    };
+    const validateEnteredTodoDescription = () => {
+      return (
+        enteredTodo.description !== null ||
+        enteredTodo.description !== undefined ||
+        enteredTodo.description !== ""
+      );
+    };
+    const validateEnteredTodoPriority = () => {
+      return (
+        enteredTodo.priority !== null ||
+        enteredTodo.priority !== undefined ||
+        enteredTodo.priority !== ""
+      );
+    };
+    const validateEnteredTodoDate = () => {
+      let validDate = Date.parse(enteredTodo.date);
+      return isNaN(validDate);
+    };
+
+    const onValidateEnteredTodo = () => {
+      return (
+        validateEnteredTodoTitle() &&
+        validateEnteredTodoDescription() &&
+        validateEnteredTodoPriority() &&
+        validateEnteredTodoDate()
+      );
+    };
+    if (onValidateEnteredTodo()) {
+      alert("Please check your Input.");
+    } else {
+      props.onSaveTodoData(enteredTodo);
+      setInputTitle("");
+      setInputDescription("");
+      setInputPriority("");
+      setInputDate("");
+    }
   };
 
   return (
@@ -55,6 +94,7 @@ const TodoForm = (props) => {
         <div className="todo__control">
           <label>Priority</label>
           <select onChange={onPriorityHandler.bind(inputPriority)}>
+            <option></option>
             <option onChange={onPriorityHandler}>High</option>
             <option onChange={onPriorityHandler}>Normal</option>
             <option onChange={onPriorityHandler}>Low</option>
@@ -72,7 +112,9 @@ const TodoForm = (props) => {
           />
         </div>
         <div className="btns">
-          <button className="btn__todo">Cancel</button>
+          <button className="btn__todo" type="button" onClick={props.isVisible}>
+            Cancel
+          </button>
           <button className="btn__todo" type="submit">
             Confirm
           </button>
