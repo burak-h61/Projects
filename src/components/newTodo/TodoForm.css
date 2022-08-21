@@ -3,7 +3,7 @@
   text-align: left;
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-  background-color: #eef0dc;
+  background-color: #ffffff;
 }
 
 .todo__control label{
@@ -30,6 +30,13 @@
   border-color: hsl(120, 76%, 50%);
 }
 
+.todo__control select:not(:placeholder-shown){
+  border-color: hsl(0, 76%, 50%);
+}
+.todo__control select:valid{
+  border-color: hsl(120, 76%, 50%);
+}
+
 .todo__control select{
   display: block;
   font:inherit;
@@ -48,7 +55,6 @@
     cursor: pointer;
     padding: 1rem 1.5rem;
     border: 1px solid #000000;
-    background-color: #52b33a;
     color: white;
     border-radius: 12px;
     margin-right: 2rem;

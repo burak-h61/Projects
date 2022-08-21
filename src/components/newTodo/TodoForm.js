@@ -65,12 +65,13 @@ const TodoForm = (props) => {
         <div className="todo__control">
           <label>Priority</label>
           <select
+            required
             value={inputPriority}
             onChange={onPriorityHandler.bind(inputPriority)}
           >
             <option></option>
             {selectOptions.map((option) => (
-              <option>{option}</option>
+              <option key={Math.random()}>{option}</option>
             ))}
           </select>
         </div>
@@ -78,11 +79,14 @@ const TodoForm = (props) => {
           <label>Date</label>
           <input
             className="todo__date"
-            type="date"
+            type="text"
             min="2019-01-01"
             max="2022-12-31"
+            required
             value={inputDate}
             onChange={onDateHandler}
+            onFocus={(e)=> (e.target.type="date")}
+            onBlur={(e)=>(e.target.type="text")}
           />
         </div>
         <div className="btns">
