@@ -22,6 +22,14 @@
   max-width: 100%;
 }
 
+.todo__control input:not(:placeholder-shown){
+  border-color: hsl(0, 76%, 50%);
+}
+
+.todo__control input:valid{
+  border-color: hsl(120, 76%, 50%);
+}
+
 .todo__control select{
   display: block;
   font:inherit;

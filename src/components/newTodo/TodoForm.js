@@ -5,6 +5,7 @@ const TodoForm = (props) => {
   const [inputDescription, setInputDescription] = useState("");
   const [inputPriority, setInputPriority] = useState("");
   const [inputDate, setInputDate] = useState("");
+  const selectOptions = ["High", "Normal", "Low"];
 
   const onTitleHandler = (event) => {
     setInputTitle(event.target.value);
@@ -30,50 +31,12 @@ const TodoForm = (props) => {
       priority: inputPriority,
       date: new Date(inputDate),
     };
-    
-    const validateEnteredTodoTitle = () => {
-      return (
-        enteredTodo.title !== null ||
-        enteredTodo.title !== undefined ||
-        enteredTodo.title !== ""
-      );
-    };
-    const validateEnteredTodoDescription = () => {
-      return (
-        enteredTodo.description !== null ||
-        enteredTodo.description !== undefined ||
-        enteredTodo.description !== ""
-      );
-    };
-    const validateEnteredTodoPriority = () => {
-      return (
-        enteredTodo.priority !== null ||
-        enteredTodo.priority !== undefined ||
-        enteredTodo.priority !== ""
-      );
-    };
-    const validateEnteredTodoDate = () => {
-      let validDate = Date.parse(enteredTodo.date);
-      return isNaN(validDate);
-    };
 
-    const onValidateEnteredTodo = () => {
-      return (
-        validateEnteredTodoTitle() &&
-        validateEnteredTodoDescription() &&
-        validateEnteredTodoPriority() &&
-        validateEnteredTodoDate()
-      );
-    };
-    if (onValidateEnteredTodo()) {
-      alert("Please check your Input.");
-    } else {
-      props.onSaveTodoData(enteredTodo);
-      setInputTitle("");
-      setInputDescription("");
-      setInputPriority("");
-      setInputDate("");
-    }
+    props.onSaveTodoData(enteredTodo);
+    setInputTitle("");
+    setInputDescription("");
+    setInputPriority("");
+    setInputDate("");
   };
 
   return (
@@ -81,7 +44,13 @@ const TodoForm = (props) => {
       <div className="todo">
         <div className="todo__control">
           <label>Todo</label>
-          <input type="text" value={inputTitle} onChange={onTitleHandler} />
+          <input
+            type="text"
+            value={inputTitle}
+            onChange={onTitleHandler}
+            required
+            pattern="\S+.*"
+          />
         </div>
         <div className="todo__control">
           <label> Description</label>
@@ -89,15 +58,20 @@ const TodoForm = (props) => {
             type="text"
             value={inputDescription}
             onChange={onDescriptionHandler}
+            required
+            pattern="\S+.*"
           />
         </div>
         <div className="todo__control">
           <label>Priority</label>
-          <select onChange={onPriorityHandler.bind(inputPriority)}>
+          <select
+            value={inputPriority}
+            onChange={onPriorityHandler.bind(inputPriority)}
+          >
             <option></option>
-            <option onChange={onPriorityHandler}>High</option>
-            <option onChange={onPriorityHandler}>Normal</option>
-            <option onChange={onPriorityHandler}>Low</option>
+            {selectOptions.map((option) => (
+              <option>{option}</option>
+            ))}
           </select>
         </div>
         <div className="todo__control">
@@ -115,7 +89,13 @@ const TodoForm = (props) => {
           <button className="btn__todo" type="button" onClick={props.isVisible}>
             Cancel
           </button>
-          <button className="btn__todo" type="submit">
+          <button
+            className="btn__todo"
+            type="submit"
+            disabled={
+              !inputTitle || !inputDescription || !inputPriority || !inputDate
+            }
+          >
             Confirm
           </button>
         </div>
