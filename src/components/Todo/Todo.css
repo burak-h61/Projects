@@ -1,3 +1,7 @@
+:root{
+    --m-top:25px;
+    --font:bold;
+}
 .todo__content{
     width: 100%;
     display: flex;
@@ -16,15 +20,27 @@
 }
 
 .todo__title{
-    margin-top: 25px;
-    font-weight: bold;
+    margin-top:var(--m-top);
+    font-weight: var(--font);
 }
 
 .todo__description{
-    margin-top: 25px;
-    font-weight: bold;
+    margin-top:var(--m-top);
+    font-weight: var(--font);
 }
 .todo__priority{
-    margin-top: 25px;
-    font-weight: bold;
+    margin-top:var(--m-top);
+    font-weight:var(--font);
+}
+.todo__delete{
+    margin-top:20px;
+    font:inherit;
+}
+
+.todo__delete button{
+    padding:8px;
+    border-radius: 12px;
+    color: #ffffff;
+    background-color: #3d8140;
+    border:1px solid black;
 }

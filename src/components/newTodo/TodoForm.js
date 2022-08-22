@@ -31,7 +31,7 @@ const TodoForm = (props) => {
       priority: inputPriority,
       date: new Date(inputDate),
     };
-
+    
     props.onSaveTodoData(enteredTodo);
     setInputTitle("");
     setInputDescription("");
@@ -50,6 +50,7 @@ const TodoForm = (props) => {
             onChange={onTitleHandler}
             required
             pattern="\S+.*"
+            maxLength="15"
           />
         </div>
         <div className="todo__control">
@@ -60,6 +61,7 @@ const TodoForm = (props) => {
             onChange={onDescriptionHandler}
             required
             pattern="\S+.*"
+            maxLength="10"
           />
         </div>
         <div className="todo__control">
@@ -71,7 +73,7 @@ const TodoForm = (props) => {
           >
             <option></option>
             {selectOptions.map((option) => (
-              <option key={Math.random()}>{option}</option>
+              <option key={Math.random().toString()}>{option}</option>
             ))}
           </select>
         </div>
